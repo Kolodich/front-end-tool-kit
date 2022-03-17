@@ -1,0 +1,49 @@
+{	
+	"import": {
+		"prefix": "import",
+		"body":	 "import $2 from '$1';",
+		"description": "import some module"
+	},
+	
+	"import:@": {
+		"prefix": "import:@",
+		"body":	 "import $2 from '@/$1';",
+		"description": "import JS"
+	},
+	"import:@com": {
+		"prefix": "import:@com",
+		"body":	 "import $2 from '@com/$1';",
+		"description": "import JS component"
+	},
+	"import:@node": {
+		"prefix": "import:@node",
+		"body":	 "import $2 from '@node/$1';",
+		"description": "import JS node_module"
+	},
+	"import:@util": {
+		"prefix": "import:@util",
+		"body":	 "import $2 from '@util/$1';",
+		"description": "import JS util"
+	},
+
+	"import:cnunk:@": {
+		"prefix": "import:chunk:@",
+		"body":	 "import(/* webpackCnunkName: '$1' */ '@/$2' )",
+		"description": "import JS as chunk"
+	},
+	"import:cnunk:@com": {
+		"prefix": "import:chunk:@com",
+		"body":	 "import(/* webpackCnunkName: '$1' */ '@com/$2' )",
+		"description": "import JS component as chunk"
+	},
+	"import:cnunk:@node": {
+		"prefix": "import:chunk:@node",
+		"body":	 "import(/* webpackCnunkName: '$1' */ '@node/$2' )",
+		"description": "import JS node_module as chunk"
+	},
+	"import:cnunk:@util": {
+		"prefix": "import:chunk:@util",
+		"body":	 "import(/* webpackCnunkName: '$1' */ '@util/$2' )",
+		"description": "import JS util as chunk"
+	}
+}

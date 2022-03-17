@@ -1,0 +1,17 @@
+{
+	"include:@": {
+		"prefix": "include:@",
+		"body":	 "include @/$1",
+		"description": "include pug file"
+	},
+	"include:@com": {
+		"prefix": "include:@com",
+		"body":	 "include @com/$1",
+		"description": "include component pug file"
+	},
+	"include:@util": {
+		"prefix": "include:@util",
+		"body":	 "include @util/$1",
+		"description": "include util pug file"
+	}
+}

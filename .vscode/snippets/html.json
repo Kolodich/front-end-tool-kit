@@ -1,0 +1,7 @@
+{
+	"include": {
+		"prefix": "include",
+		"body":	 "@@include('$1')",
+		"description": "include html file"
+	}
+}

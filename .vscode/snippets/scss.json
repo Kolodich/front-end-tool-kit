@@ -1,0 +1,22 @@
+{
+	"inport:@": {
+		"prefix": "import:@",
+		"body":	 "@import '@/$1';",
+		"description": "import scss file"
+	},
+	"inport:@com": {
+		"prefix": "import:@com",
+		"body":	 "@import '@com/$1';",
+		"description": "import component scss file"
+	},
+	"inport:@node": {
+		"prefix": "import:@node",
+		"body":	 "@import '@node/$1';",
+		"description": "import node_module scss file"
+	},
+	"inport:@util": {
+		"prefix": "import:@util",
+		"body":	 "@import '@util/$1';",
+		"description": "import util scss file"
+	}
+}
