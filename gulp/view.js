@@ -22,7 +22,7 @@ const debug = require('gulp-debug');
 
 const SEARSH_TAGS_WITH_SRC_REGEX = /<.*(src|srcset|href|url).+?>/g;
 
-const PUG_ALIASES = { 
+const PUG_ALIASES = {
 	[pugAlias.components]: 	p => p.replace(new RegExp(`^${pugAlias.components}`),'src/components'),
 	[pugAlias.utils]: 		p => p.replace(new RegExp(`^${pugAlias.utils}`), 'src/views/utils'),
 	[pugAlias.pug]: 		p => p.replace(new RegExp(`^${pugAlias.pug}`), 'src/views'),
@@ -41,11 +41,11 @@ const replaceScssToCss = str => str.replace(/(scss|sass)/g, 'css');
 const fixRelativePath = str => str.replace('../', '');
 
 const fixInteractiveSrcPath = (str, aliasObj) => {
-	if (str.includes(aliasObj.images)) 
+	if (str.includes(aliasObj.images))
 		str = str.replace(aliasObj.images, 'images');
-	else if (str.includes(aliasObj.audios)) 
+	else if (str.includes(aliasObj.audios))
 		str = str.replace(aliasObj.audios, 'audios');
-	else if (str.includes(aliasObj.videos)) 
+	else if (str.includes(aliasObj.videos))
 		str = str.replace(aliasObj.videos, 'videos');
 	return str;
 }
