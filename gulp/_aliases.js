@@ -11,7 +11,7 @@ const BASE_ALIAS = '@base';
 const EXT_ALIAS = '@';
 
 module.exports = {
-	html: { 
+	html: {
 		images: IMAGES_ALIAS,
 		audios: AUDIO_ALIAS,
 		videos: VIDEO_ALIAS,
@@ -27,6 +27,7 @@ module.exports = {
 	scss: {
 		components: COMPONENTS_ALIAS,
 		utils: UTILS_ALIAS,
+		images: IMAGES_ALIAS,
 		node: NODE_ALIAS,
 		fonts: FONTS_ALIAS,
 		base: BASE_ALIAS,

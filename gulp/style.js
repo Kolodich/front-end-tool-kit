@@ -18,14 +18,16 @@ const cached = require('gulp-cached');
 
 // >---------- Consts ----------
 
-const SEARCH_IMPORT_FONT_REGEX = /@import.*url\(@fonts.+?\)/g;
+const SEARCH_IMPORT_FONT_REGEX = new RegExp(`@import.*url\\(.*${alias.fonts}.+?\\)`);
+const SEARCH_URL_REGEX = new RegExp(`url\\(.*?${alias.images}.+?\\)`);
 
 const ALIASES_CONFIG = {
+	[alias.fonts]: 		'../fonts',
 	[alias.components]: 'src/components',
 	[alias.node]: 		'node_modules',
 	[alias.utils]: 		'src/scss/utils',
 	[alias.base]: 		'src/scss/base',
-	[alias.scss]: 		'src/scss',
+	[alias.scss]: 		'src/scss'
 }
 
 const SASS_VARS = {
@@ -34,20 +36,23 @@ const SASS_VARS = {
 
 // >---------- Functions ----------
 
-const fixFontsPath = str => str.replace(alias.fonts, 'fonts');
+const fixFontsPath = str => str.replace(alias.fonts, '../fonts');
+const fixUrlPath = str => str.replace(alias.images, '../images');
 
 // >---------- Tasks ----------
 
 const compileScssToCss = () => {
 	return gulp.src(['src/scss/**/[!_]*.{scss,sass}'], { nodir: true })
-		.pipe(styleAlises(ALIASES_CONFIG))
 		.pipe(gulpif(env.STYLE_MAP === 'true', sourcemaps.init()))
+		.pipe(replace(SEARCH_URL_REGEX, fixUrlPath))
+		.pipe(styleAlises(ALIASES_CONFIG))
 		.pipe(sassVars(SASS_VARS, { verbose: false }))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(cached('styles'))
-		.pipe(debug({ title: "CSS files: " }))
 		.pipe(replace(SEARCH_IMPORT_FONT_REGEX, fixFontsPath))
+		.pipe(replace(SEARCH_URL_REGEX, fixUrlPath))
 		.pipe(postcss())
+		.pipe(debug({ title: "CSS files: " }))
 		.pipe(gulpif(env.COPYRIGHT === 'true', headerComment(CONTACTS)))
 		.pipe(gulpif(env.STYLE_MAP === 'true', sourcemaps.write('map')))
 		.pipe(gulp.dest('dist/css'))
