@@ -18,7 +18,7 @@ function getJsEntries() {
 		const basename = path.basename(file, '.js');
 		entries[basename] = path.resolve(__dirname, `src/js/${file}`);
 	});
-	
+
 	return entries;
 }
 
@@ -54,20 +54,20 @@ const plugins = [
 	new webpack.DefinePlugin({
 		'$PRODUCTION': env.NODE_ENV === 'production'
 	}),
-	...(env.SCRIPT_MAP === 'true' 
-		? [new webpack.SourceMapDevToolPlugin({ filename: 'map/[name]-[contenthash].js.map'})] 
+	...(env.SCRIPT_MAP === 'true'
+		? [new webpack.SourceMapDevToolPlugin({ filename: 'maps/[name]-[contenthash].js.map'})]
 		: []
 	)
 ]
 
 const _module = {
 	rules: [
-		...(env.BABEL === 'true' 
+		...(env.BABEL === 'true'
 				? [{
 					test: /\.js$/,
 					loader: 'babel-loader',
 					exclude: /node_modules/
-					}] 
+					}]
 				: []
 		)
 	]

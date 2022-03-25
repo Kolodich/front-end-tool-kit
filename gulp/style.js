@@ -54,7 +54,7 @@ const compileScssToCss = () => {
 		.pipe(postcss())
 		.pipe(debug({ title: "CSS files: " }))
 		.pipe(gulpif(env.COPYRIGHT === 'true', headerComment(CONTACTS)))
-		.pipe(gulpif(env.STYLE_MAP === 'true', sourcemaps.write('map')))
+		.pipe(gulpif(env.STYLE_MAP === 'true', sourcemaps.write('maps')))
 		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream());
 }
