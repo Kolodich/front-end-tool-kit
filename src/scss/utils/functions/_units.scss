@@ -1,0 +1,15 @@
+@function px-to-rem($num, $rem-base: 16) {
+	@return calc($num / $rem-base) + rem;
+}
+
+@function rem-to-px($num, $rem-base: 16) {
+	@return calc($num * $rem-base) + rem;
+}
+
+@function px-to-em($num, $px-base: 1) {
+	@return calc($num / $px-base) + em;
+}
+
+@function rem-to-em($num, $base: 16) {
+	@return calc($num / $base) + em;
+}

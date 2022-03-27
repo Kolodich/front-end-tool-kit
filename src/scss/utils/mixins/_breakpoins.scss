@@ -1,0 +1,107 @@
+@function breakpoint-min($name, $breakpoints: $breakpoints-map) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $breakpoints-map) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+
+
+@mixin media-breakpoint-min($name, $breakpoints: $breakpoints-map) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-max($name, $breakpoints: $breakpoints-map) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $breakpoints-map) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-min($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-max($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+
+
+@mixin media-max($breakpoint, $breakpoints: $breakpoints-map) {
+	@if is-string($breakpoint) {
+		@include media-breakpoint-max($breakpoint, $breakpoints) {
+			@content;
+		}
+	} @else if is-length($breakpoint) {
+		@media (max-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+		@content;
+	}
+}
+
+@mixin media-min($breakpoint, $breakpoints: $breakpoints-map) {
+	@if is-string($breakpoint) {
+		@include media-breakpoint-min($breakpoint, $breakpoints) {
+			@content;
+		}
+  } @else if is-length($breakpoint) {
+		@media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+		@content;
+	}
+}
+
+@mixin media-between($lower, $upper) {
+	$min: $lower;
+	@if not is-length($min) {
+		$min: breakpoint-min($lower, $breakpoints);
+	}
+	$max: $upper;
+	@if not is-length($max) {
+		$max: breakpoint-max($upper, $breakpoints);
+	}
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-min($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-max($upper, $breakpoints) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@mixin aspect-ratio-wrapper($width, $height) {
+	position: relative;
+	width: 100%;
+	padding-bottom: calc($height / $width) * 100%;
+}
+
+@mixin aspect-ratio-inner {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
