@@ -5,7 +5,7 @@
 			"@com/*": ["src/components/*"],
 			"@util/*": ["src/js/utils/*"],
 			"@/*": ["src/js/*"],
-			"@node/*": ["node_modules/*"],
+			"@node_modules/*": ["node_modules/*"],
 		}
 	}
 }
