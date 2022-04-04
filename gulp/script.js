@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack-stream');
 const { env } = require("process");
-const { CONTACTS } = require('./_contacts.js');
+const { CONTACTS } = require('./_codeowners.js');
 const headerComment = require('gulp-header-comment');
 const gulpif = require('gulp-if');
 const webpackConfig = require('../webpack.config');
@@ -16,7 +16,7 @@ const cached = require('gulp-cached');
 const compileJs = async done => {
 	await gulp.src('./')
 		.pipe(webpack(webpackConfig)
-			.on('error', err => { 
+			.on('error', err => {
 				done(err);
 			})
 		)

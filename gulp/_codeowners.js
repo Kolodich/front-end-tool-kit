@@ -4,7 +4,7 @@ const fs = require('fs');
 
 // >---------- Consts ----------
 
-let CONTACTS =  fs.readFileSync("./contacts", "utf8");
+let CONTACTS =  fs.readFileSync("./codeowners", "utf8");
 
 CONTACTS = CONTACTS.replace('[date]', new Date().getFullYear());
 

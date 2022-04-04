@@ -1,6 +1,6 @@
 // >---------- Imports ----------
 
-const { CONTACTS } = require('./_contacts.js');
+const { CONTACTS } = require('./_codeowners.js');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const pugAliasPlugin = require('pug-alias');
