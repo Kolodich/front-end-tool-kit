@@ -130,10 +130,22 @@ JS: `import '@/other-script.js';`
   * подключайте шрифты в `src/scss/base/_fonts.sscs`
 
 ### Изображения
+
 * изображения находятся в `src/images`
 * изображения для автоматического создания фавиконок находятся в `src/images/favicons`
   * изображение фавиконки должно быть формата PNG/JPG/GIF и не быть меньше `1024x1024`
   * для подключения фавиконок в HTML/PUG используйте файл `src/views/utils/_favicons.html`
+* изображения из библиотек импортируйте библиотек единожды в JavaScript файле
+  * изображения копируются в `./dist/images/[module_name]/[image]`
+
+#### Пример импорта изображения из библиотеки
+
+```js
+// index.js
+import '@node_modules/leaflet/dist/images/marker-icon.png';
+```
+
+Результат: `./dist/images/leaflet/marker-icon.png`
 
 ### VS Code
 

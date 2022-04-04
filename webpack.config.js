@@ -8,6 +8,10 @@ const alias = require('./gulp/_aliases').js;
 
 // >---------- Helpers ----------
 
+function getModuleName(str) {
+	return str.match(/(?<=node_modules[\\/])[^\\/]+/i);
+}
+
 function getJsEntries() {
 	const jsFilesPath = path.resolve(__dirname, 'src/js/');
 	const isValidJsFile = s => s.endsWith('.js') && !s.startsWith('_');
@@ -62,6 +66,24 @@ const plugins = [
 
 const _module = {
 	rules: [
+		{
+			test: /\.(png|jpe?g|gif|webp|avif)$/i,
+			use: [
+			  {
+				loader: 'file-loader',
+				options: {
+					name(resourcePath, resourceQuery) {
+						const moduleName = getModuleName(resourcePath);
+
+						if (moduleName)
+							return path.resolve(__dirname, `dist/images/${moduleName}/[name].[ext]`);
+
+						return path.resolve(__dirname, 'dist/images/[name].[ext]');
+					}
+				},
+			  },
+			],
+		},
 		...(env.BABEL === 'true'
 				? [{
 					test: /\.js$/,
