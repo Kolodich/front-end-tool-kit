@@ -1,8 +1,8 @@
 //! No use regular expresion`s sumbols as aliase {$, +, ., *}
 
 const COMPONENTS_ALIAS = '@com';
-const UTILS_ALIAS = '@util';
-const NODE_ALIAS = '@node';
+const UTILS_ALIAS = '@utils';
+const NODE_ALIAS = '@node_modules';
 const IMAGES_ALIAS = '@img';
 const AUDIO_ALIAS = '@audio';
 const VIDEO_ALIAS = '@video';

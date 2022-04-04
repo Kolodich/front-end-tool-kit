@@ -96,16 +96,16 @@ components
   * `@com` = `src/components`
 * PUG
   * `@` = `src/views`
-  * `@util` = `src/views/utils`
+  * `@utils` = `src/views/utils`
 * SCSS
   * `@` = `src/scss`
-  * `@util` = `src/scss/utils`
-  * `@node` =  `node_modules`
+  * `@utils` = `src/scss/utils`
+  * `@node_modules` =  `node_modules`
   * `@base` = `src/scss/base6``
 * JS
   * `@` = `src/views`
-  * `@util` = `src/js/utils`
-  * `@node` =  `node_modules`
+  * `@utils` = `src/js/utils`
+  * `@node_modules` =  `node_modules`
 
 #### Примеры использования
 
