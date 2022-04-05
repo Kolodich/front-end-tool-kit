@@ -1,2 +1,2 @@
-mixin com-header($attrs = {}, $data)
-	header.header(id=$attrs.id, class=$attrs.class)
+mixin com-header($attrs = {}, $data, $tag = "header")
+	#{$tag}.header()&attributes($attrs)
