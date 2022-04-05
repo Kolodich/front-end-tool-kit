@@ -101,7 +101,7 @@ components
   * `@` = `src/scss`
   * `@utils` = `src/scss/utils`
   * `@node_modules` =  `node_modules`
-  * `@base` = `src/scss/base6``
+  * `@base` = `src/scss/base`
 * JS
   * `@` = `src/views`
   * `@utils` = `src/js/utils`
